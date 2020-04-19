@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'videoFaceExtract Extract faces from video uploaded to s3 bucket by users '
+Globals:
+  Function:
+    Timeout: 900
+Resources:
+  videoFaceExtract:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: videoFaceExtract
+      Handler: main/lambda_function.lambda_handler
+      Runtime: python3.7
+      MemorySize: 2048
+      Role: arn:aws:iam::474850310752:role/lambdaS3API
+      Events: null
