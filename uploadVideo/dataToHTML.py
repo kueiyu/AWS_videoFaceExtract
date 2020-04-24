@@ -8,14 +8,14 @@ def htmlTableBody(metadata, video_path, img_path):
     table_body = ''
     for video in metadata:
         table_body += '<tr>'
-        table_body += '<td>' + video['video_filename'] + '</td>'
-        table_body += '<td>' + video_snippet.replace('target', video_path + video['video_filename']) + '</td>'
-        table_body += '<td>' + video['uploadDate'] + '</td>'
-        table_body += '<td>' + video['processDate'] + '</td>'
+        table_body += '<td>{}</td>'.format(video['video_filename'])
+        table_body += '<td>' + video_snippet.format(video_path + video['video_filename']) + '</td>'
+        table_body += '<td>{}</td>'.format(video['uploadDate'])
+        table_body += '<td>{}</td>'.format(video['processDate'])
         table_body += '<td><table>'
-        for face in video['faces']:
-            table_body += face_snippet.replace('target', img_path + face)
-            # Add age here
+        for i, face in enumerate(video['face_filenames']):
+            table_body += face_snippet.format(img_path + face, video['face_ages'][i])
+            
         table_body += '</table></td>'
         table_body += '</tr>'
     return table_body
