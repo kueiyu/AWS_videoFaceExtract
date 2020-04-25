@@ -1,7 +1,7 @@
 import json
 import boto3
 
-def callAgePrediction(video_filename: str, face_bucket: str, face_image_filenames: list):
+def callAgePrediction(function_name, video_filename: str, face_bucket: str, face_image_filenames: list):
     
     metadata = {
         'video_filename': video_filename,
@@ -11,7 +11,7 @@ def callAgePrediction(video_filename: str, face_bucket: str, face_image_filename
     
     client = boto3.client('lambda')
     response = client.invoke(
-        FunctionName='ageByRekognition',
+        FunctionName = function_name,
         InvocationType='Event',  # asynchronously
         Payload = json.dumps(metadata)
     )

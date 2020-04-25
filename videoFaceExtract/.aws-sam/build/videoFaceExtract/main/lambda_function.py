@@ -65,7 +65,8 @@ def lambda_handler(event, context):
         r = db.AddAttrToItemInDB(key, 'processTime', '{:.2f} sec'.format(end_time - start_time)) # Add processing time to DB
         print('Total processing time is recorded into dynamoDB')
 
-        invoke.callAgePrediction(key, bucket_results ,face_image_filenames)
+        invoke.callAgePrediction('ageByRekognition', key, bucket_results ,face_image_filenames)  # AWS Rekognition
+        invoke.callAgePrediction('ageresult-agedetect-1LWDIB23S7W2G', key, bucket_results ,face_image_filenames) # age_net
         print('Invoke Age prediction lambda function')
 
     return "Finished"
