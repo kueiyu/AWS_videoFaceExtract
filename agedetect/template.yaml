@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'age_detect Sample SAM Template'
+
+Globals:
+  Function:
+    Timeout: 900 
+
+Resources:
+  agedetect:
+    Type: 'AWS::Serverless::Function' # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: .
+      Handler: main/lambda_function.lambda_handler
+      Runtime: python3.7
+      MemorySize: 2048
+      Role: 'arn:aws:iam::474850310752:role/lambdaS3API'
+      Events: null
