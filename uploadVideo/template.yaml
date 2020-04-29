@@ -16,7 +16,7 @@ Resources:
         Api1:
           Type: Api
           Properties:
-            Path: /MyResource
+            Path: /test
             Method: ANY
       Layers:
         - >-

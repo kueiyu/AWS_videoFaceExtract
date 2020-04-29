@@ -15,13 +15,19 @@ def htmlTableBody(metadata, video_path, img_path):
         table_body += '<td><table>'
         
         face_ages = video['face_ages'].split(',') # face ages stored in db as a single string separated by comma
+        face_ages2 = video['face_ages2'].split(',')
         
         for i, face in enumerate(video['face_filenames']):
             try:
                 age = face_ages[i]
             except:
                 age = 'age unavailable'
-            table_body += face_snippet.format(img_path + face, age)
+            try:
+                age2 = face_ages2[i]
+            except:
+                age2 = ''
+            
+            table_body += face_snippet.format(img_path + face, age, age2)
             
         table_body += '</table></td>'
         table_body += '</tr>'

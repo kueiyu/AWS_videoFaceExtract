@@ -14,11 +14,13 @@ def getDataOfVideosAndFaces(table_name='videoFace'):
         process_time = result.get('processTime', {'S': 'Processing'})['S']
         face_filenames = result.get('faceFileNames', {'SS': []})['SS']
         face_ages = result.get('face_ages', {'S': ''})['S']
+        face_ages2 = result.get('face_ages2', {'S': ''})['S']
         output.append({
                 'video_filename': video_filename,
                 'uploadDate': upload_date,
                 'processTime': process_time,
                 'face_filenames': face_filenames,
                 'face_ages': face_ages,
+                'face_ages2': face_ages2,
         })
     return output
